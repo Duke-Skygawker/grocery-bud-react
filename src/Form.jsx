@@ -1,13 +1,13 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
 
-const Form = ({ items, setItems, toast }) => {
+const Form = ({ items, setItems, toast, saveList }) => {
   const [item, setItem] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!item) {
       console.log("Invalid Value");
-      alert("Invalid Value, cannot submit empty.");
+      toast.error("Invalid Value, cannot submit empty.");
       return;
     }
     const newItems = [...items];
@@ -15,6 +15,7 @@ const Form = ({ items, setItems, toast }) => {
     newItems.push(newItem);
     setItems(newItems);
     toast.success(item + " added to the list");
+    saveList(newItems);
     setItem("");
   };
   const handleChange = (e) => {

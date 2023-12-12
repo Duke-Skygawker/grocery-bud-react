@@ -10,6 +10,7 @@ const Items = ({ items, setItems, toast }) => {
 
   const clearList = () => {
     setItems([]);
+    localStorage.clear();
     toast.warning("cleared the list");
   };
   return (
