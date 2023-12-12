@@ -21,6 +21,17 @@ const App = () => {
       localStorage.clear();
     }
   };
+  const editItem = (id) => {
+    const newItems = items.map((item) => {
+      if (item.id === id) {
+        const newItem = { ...item, completed: !item.completed };
+        return newItem;
+      }
+      return item;
+    });
+    setItems(newItems);
+    saveLocally(newItems);
+  };
   useEffect(() => {
     loadLocally();
   }, []);
@@ -33,7 +44,13 @@ const App = () => {
           toast={toast}
           saveList={saveLocally}
         />
-        <Items items={items} setItems={setItems} toast={toast} />
+        <Items
+          items={items}
+          setItems={setItems}
+          toast={toast}
+          saveList={saveLocally}
+          editItem={editItem}
+        />
       </div>
       <ToastContainer position="top-center" autoClose={1000} />
     </main>

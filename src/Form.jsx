@@ -3,13 +3,8 @@ import { useState } from "react";
 
 const Form = ({ items, setItems, toast, saveList }) => {
   const [item, setItem] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!item) {
-      console.log("Invalid Value");
-      toast.error("Invalid Value, cannot submit empty.");
-      return;
-    }
+
+  const addNewItem = () => {
     const newItems = [...items];
     const newItem = { name: item, id: nanoid(), completed: false };
     newItems.push(newItem);
@@ -17,6 +12,15 @@ const Form = ({ items, setItems, toast, saveList }) => {
     toast.success(item + " added to the list");
     saveList(newItems);
     setItem("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!item) {
+      toast.error("Invalid Value, cannot submit empty.");
+      return;
+    }
+    addNewItem();
   };
   const handleChange = (e) => {
     setItem(e.target.value);
