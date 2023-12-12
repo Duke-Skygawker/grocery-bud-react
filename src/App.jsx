@@ -12,8 +12,10 @@ const App = () => {
   };
 
   const loadLocally = () => {
-    const localList = JSON.parse(localStorage.getItem("items"));
-    if (localList) {
+    const localArray = localStorage.getItem("items");
+
+    if (localArray) {
+      const localList = JSON.parse(localArray);
       setItems(localList);
     }
   };
