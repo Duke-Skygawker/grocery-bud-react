@@ -17,6 +17,8 @@ const App = () => {
     if (localArray) {
       const localList = JSON.parse(localArray);
       setItems(localList);
+    } else if (localArray === undefined) {
+      localStorage.clear();
     }
   };
   useEffect(() => {
