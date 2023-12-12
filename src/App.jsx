@@ -11,7 +11,7 @@ const App = () => {
     <main>
       <div className="section-center">
         <Form items={items} setItems={setItems} toast={toast} />
-        <Items items={items} setItems={setItems} />
+        <Items items={items} setItems={setItems} toast={toast} />
       </div>
       <ToastContainer position="top-center" autoClose={1000} />
     </main>
